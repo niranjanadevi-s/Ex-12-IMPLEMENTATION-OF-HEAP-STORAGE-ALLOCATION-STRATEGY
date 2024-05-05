@@ -11,9 +11,7 @@ ALGORITHM
 3. Define a function display(node) to display the list of allocated nodes.
 4. Define a function search(node,key) to search for the element in list.
 5. Define a function insert(node) to insert element into the list.
-6. Define a function get_prev(node,value) to look for the previous element in the list.
-7. Define a function delete() to remove an element from the list.
-8. Stop the program.
+6. Stop the program.
 
  PROGRAM
 #include <stdio.h>
@@ -31,22 +29,9 @@ void dele(node **head) {
     int key;
     node *temp = *head;
     node *prev = NULL;
-
-    if (temp == NULL) {
-        printf("\nThe list is empty\n");
-        return;
-    }
  printf("\nEnter the element you want to delete: ");
     scanf("%d", &key);
-
-    temp = search(*head, key);
-    if (temp != NULL) {
-        prev = *head;
-    } else {
-            while (prev->next != NULL && prev->next->data != key)
-                prev = prev->next;
-
-        if (prev->next != NULL) {
+ if (prev->next != NULL) {
                 temp = prev->next;
                 prev->next = temp->next;
                 free(temp);
@@ -62,24 +47,16 @@ void dele(node **head) {
     temp->next = NULL;
     return temp;
 }
-
 node *create() {
     node *temp, *New, *head = NULL;
     int val;
     char ans = 'y';
-    int flag = TRUE;
-
-    do {
-        printf("\nEnter the element: ");
-        scanf("%d", &val);
-
+    int flag = TRUE
         New = get_node();
         if (New == NULL) {
             printf("\nMemory allocation failed\n");
             exit(1);
-        }
-
-        New->data = val;
+        }New->data = val;
         New->next = NULL;
 
         if (flag == TRUE) {
@@ -89,25 +66,20 @@ node *create() {
         } else {
             temp->next = New;
             temp = New;
-        }
-
-        printf("\nDo you want to enter more elements? (y/n): ");
+        }printf("\nDo you want to enter more elements? (y/n): ");
         scanf(" %c", &ans);
     } while (ans == 'y' || ans == 'Y');
 
     printf("\nThe list is created\n");
     return head;
-}
-
-void display(node *head) {
+}void display(node *head) {
     node *temp = head;
 
     if (temp == NULL) {
         printf("\nThe list is empty\n");
         return;
     }
-
-    printf("\n");
+ printf("\n");
     while (temp != NULL) {
         printf("%d ", temp->data);
         if (temp->next != NULL)
@@ -116,28 +88,19 @@ void display(node *head) {
     }
     printf("\n");
 }
-
 node *search(node *head, int key) {
     node *temp = head;
 
     if (temp == NULL) {
         printf("\nThe linked list is empty\n");
         return NULL;
-    }
-
-    while (temp != NULL) {
+    }while (temp != NULL) {
         if (temp->data == key) {
             printf("\nThe element is present in the list\nThe element is Deleted");
             return temp;
         }
         temp = temp->next;
-    }
-
-    printf("\nThe element is not present in the list\n");
-    return NULL;
-}
-
-node *insert(node *head) {
+    }node *insert(node *head) {
     int choice;
     head = insert_head(head);
     head = insert_last(head);
@@ -146,14 +109,10 @@ node *insert(node *head) {
 }
 return New;
 }
-
 node *insert_last(node *head) {
     int val;
     node *New = get_node();
     node *temp = head;
-    printf("\nEnter the element you want to insert: ");
-    scanf("%d", &val);
-    New->data = val;
     New->next = NULL;
 if (head == NULL)
         head = New;
@@ -161,20 +120,15 @@ if (head == NULL)
         while (temp->next != NULL)
             temp = temp->next;
         temp->next = New;
-    }
-
-    return head;
-}
-
-void insert_after(node *head) {
+    } return head;
+}void insert_after(node *head) {
     int key;
     node *New = get_node();
     node *temp = head;
 
     printf("\nEnter the element after which you want to insert the node: ");
     scanf("%d", &key);
-
-    while (temp != NULL) {
+ while (temp != NULL) {
         if (temp->data == key) {
             printf("\nEnter the element you want to insert: ");
             scanf("%d", &New->data);
@@ -184,14 +138,10 @@ void insert_after(node *head) {
         }
         temp = temp->next;
     }
-
-    printf("\nThe specified element is not found in the list\n");
-}
 int main() {
     int choice;
     node *head = NULL;
-
-    do {
+do {
         printf("\nProgram to perform various operations on heap using dynamic memory management\n");
         printf("1. Create\n");
         printf("2. Display\n");
@@ -207,11 +157,9 @@ int main() {
                 head = insert(head);
                 break;
             default:
-                printf("Invalid choice, try again.\n");
-        }
+                printf("Invalid choice, try again.\n")
     } while (choice != 5);
-
-    return 0;
+ return 0;
 }
 ~~~
 
