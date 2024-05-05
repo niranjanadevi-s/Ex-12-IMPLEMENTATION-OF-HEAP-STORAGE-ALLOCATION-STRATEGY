@@ -1,7 +1,6 @@
 ~~~
  Ex-12-IMPLEMENTATION-OF-HEAP-STORAGE-ALLOCATION-STRATEGY
 IMPLEMENTATION OF HEAP STORAGE ALLOCATION STRATEGY
-
  Aim :
 To write a program to implement heap storage allocation strategy.
 ALGORITHM
@@ -11,8 +10,7 @@ ALGORITHM
 4. Define a function search(node,key) to search for the element in list.
 5. Define a function insert(node) to insert element into the list.
 6. Stop the program.
-
- PROGRAM
+PROGRAM
 #include <stdio.h>
 #include <stdlib.h>
 #define TRUE 1
@@ -20,45 +18,16 @@ ALGORITHM
 // Function prototypes
 node *create();
 void display(node *);
-node *search(node *, int);
-node *insert(node *);
-void insert_after(node *);
-// Function definitions
-void dele(node **head) {
     int key;
     node *temp = *head;
-    node *prev = NULL;
- printf("\nEnter the element you want to delete: ");
-    scanf("%d", &key);
- if (prev->next != NULL) {
-                temp = prev->next;
-                prev->next = temp->next;
-                free(temp);
-            } else
-                printf("\nThe element is not found in the list\n");
-        }
-    }node *get_node() {
-    node *temp = (node *)malloc(sizeof(node));
-    temp->next = NULL;
-    return temp;
 }
 node *create() {
-    node *temp, *New, *head = NULL;
-    int val;
-    char ans = 'y';
-    int flag = TRUE
-        New = get_node();
         if (New == NULL) {
             printf("\nMemory allocation failed\n");
             exit(1);
         }New->data = val;
         New->next = NULL;
       {
-            temp->next = New;
-            temp = New;
-        }printf("\nDo you want to enter more elements? (y/n): ");
-        scanf(" %c", &ans);
-    } while (ans == 'y' || ans == 'Y');
  printf("\nThe list is created\n");
     return head;
 }void display(node *head) {
@@ -71,13 +40,7 @@ node *create() {
     node *temp = head;
     }while (temp != NULL) {
         if (temp->data == key) {
-            printf("\nThe element is present in the list\nThe element is Deleted");
-            return temp;
-        }
-        temp = temp->next;
-    }node *insert(node *head) {
-    int choice;
-    head = insert_head(head);
+            printf("\nThe element is present in the list\nThe element is Deleted")
 }
 return New;
 }
@@ -92,17 +55,6 @@ if (head == NULL)
         while (temp->next != NULL)
             temp = temp->next;
         temp->next = New;
-    } return head
-printf("\nEnter the element after which you want to insert the node: ");
-    scanf("%d", &key);
- while (temp != NULL) {
-        if (temp->data == key) {
-            printf("\nEnter the element you want to insert: ");
-            scanf("%d", &New->data);
-            New->next = temp->next;
-            temp->next = New;
-            return;
-        }
         temp = temp->next;
     }
 int main() {
