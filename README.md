@@ -1,12 +1,11 @@
-# Ex-12-IMPLEMENTATION-OF-HEAP-STORAGE-ALLOCATION-STRATEGY
+~~~
+ Ex-12-IMPLEMENTATION-OF-HEAP-STORAGE-ALLOCATION-STRATEGY
 IMPLEMENTATION OF HEAP STORAGE ALLOCATION STRATEGY
 
-# Date :5.5.2024
-
-# Aim :
+ Aim :
 To write a program to implement heap storage allocation strategy.
 
-# ALGORITHM
+ALGORITHM
 1. Start the program.
 2. Define a function create( ) to create a list of allocated node. This function returns a pointer to head of list.
 3. Define a function display(node) to display the list of allocated nodes.
@@ -16,30 +15,17 @@ To write a program to implement heap storage allocation strategy.
 7. Define a function delete() to remove an element from the list.
 8. Stop the program.
 
-# PROGRAM
-~~~
+ PROGRAM
 #include <stdio.h>
 #include <stdlib.h>
-
 #define TRUE 1
 #define FALSE 0
-
-typedef struct Heap {
-    int data;
-    struct Heap *next;
-} node;
-
 // Function prototypes
 node *create();
 void display(node *);
 node *search(node *, int);
 node *insert(node *);
-void dele(node **);
-node *get_node();
-node *insert_head(node *);
-node *insert_last(node *);
 void insert_after(node *);
-
 // Function definitions
 void dele(node **head) {
     int key;
@@ -50,32 +36,24 @@ void dele(node **head) {
         printf("\nThe list is empty\n");
         return;
     }
-
-    printf("\nEnter the element you want to delete: ");
+ printf("\nEnter the element you want to delete: ");
     scanf("%d", &key);
 
     temp = search(*head, key);
     if (temp != NULL) {
         prev = *head;
-
-        if (prev->data == key) {
-            *head = temp->next;
-            free(temp);
-        } else {
+    } else {
             while (prev->next != NULL && prev->next->data != key)
                 prev = prev->next;
 
-            if (prev->next != NULL) {
+        if (prev->next != NULL) {
                 temp = prev->next;
                 prev->next = temp->next;
                 free(temp);
             } else
                 printf("\nThe element is not found in the list\n");
         }
-    }
-}
-
-node *get_node() {
+    }node *get_node() {
     node *temp = (node *)malloc(sizeof(node));
     if (temp == NULL) {
         printf("\nMemory allocation failed\n");
@@ -166,30 +144,18 @@ node *insert(node *head) {
     insert_after(head);
     return head;
 }
-
-node *insert_head(node *head) {
-    int val;
-    node *New = get_node();
-
-    printf("\nEnter the element you want to insert: ");
-    scanf("%d", &val);
-    New->data = val;
-    New->next = head;
-
-    return New;
+return New;
 }
 
 node *insert_last(node *head) {
     int val;
     node *New = get_node();
     node *temp = head;
-
     printf("\nEnter the element you want to insert: ");
     scanf("%d", &val);
     New->data = val;
     New->next = NULL;
-
-    if (head == NULL)
+if (head == NULL)
         head = New;
     else {
         while (temp->next != NULL)
@@ -221,7 +187,6 @@ void insert_after(node *head) {
 
     printf("\nThe specified element is not found in the list\n");
 }
-
 int main() {
     int choice;
     node *head = NULL;
@@ -230,12 +195,7 @@ int main() {
         printf("\nProgram to perform various operations on heap using dynamic memory management\n");
         printf("1. Create\n");
         printf("2. Display\n");
-        printf("3. Insert an element in the list\n");
-        printf("4. Delete an element from the list\n");
-        printf("5. Quit\n");
-        printf("Enter your choice (1-5): ");
         scanf("%d", &choice);
-
         switch (choice) {
             case 1:
                 head = create();
@@ -246,12 +206,6 @@ int main() {
             case 3:
                 head = insert(head);
                 break;
-            case 4:
-                dele(&head);
-                break;
-            case 5:
-                printf("Exiting the program...\n");
-                exit(0);
             default:
                 printf("Invalid choice, try again.\n");
         }
