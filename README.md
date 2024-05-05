@@ -4,7 +4,6 @@ IMPLEMENTATION OF HEAP STORAGE ALLOCATION STRATEGY
 
  Aim :
 To write a program to implement heap storage allocation strategy.
-
 ALGORITHM
 1. Start the program.
 2. Define a function create( ) to create a list of allocated node. This function returns a pointer to head of list.
@@ -40,10 +39,6 @@ void dele(node **head) {
         }
     }node *get_node() {
     node *temp = (node *)malloc(sizeof(node));
-    if (temp == NULL) {
-        printf("\nMemory allocation failed\n");
-        exit(1);
-    }
     temp->next = NULL;
     return temp;
 }
@@ -58,42 +53,22 @@ node *create() {
             exit(1);
         }New->data = val;
         New->next = NULL;
-
-        if (flag == TRUE) {
-            head = New;
-            temp = head;
-            flag = FALSE;
-        } else {
+      {
             temp->next = New;
             temp = New;
         }printf("\nDo you want to enter more elements? (y/n): ");
         scanf(" %c", &ans);
     } while (ans == 'y' || ans == 'Y');
-
-    printf("\nThe list is created\n");
+ printf("\nThe list is created\n");
     return head;
 }void display(node *head) {
     node *temp = head;
-
-    if (temp == NULL) {
+ if (temp == NULL) {
         printf("\nThe list is empty\n");
         return;
-    }
- printf("\n");
-    while (temp != NULL) {
-        printf("%d ", temp->data);
-        if (temp->next != NULL)
-            printf("-> ");
-        temp = temp->next;
-    }
     printf("\n");
-}
-node *search(node *head, int key) {
+}node *search(node *head, int key) {
     node *temp = head;
-
-    if (temp == NULL) {
-        printf("\nThe linked list is empty\n");
-        return NULL;
     }while (temp != NULL) {
         if (temp->data == key) {
             printf("\nThe element is present in the list\nThe element is Deleted");
@@ -103,9 +78,6 @@ node *search(node *head, int key) {
     }node *insert(node *head) {
     int choice;
     head = insert_head(head);
-    head = insert_last(head);
-    insert_after(head);
-    return head;
 }
 return New;
 }
@@ -120,13 +92,8 @@ if (head == NULL)
         while (temp->next != NULL)
             temp = temp->next;
         temp->next = New;
-    } return head;
-}void insert_after(node *head) {
-    int key;
-    node *New = get_node();
-    node *temp = head;
-
-    printf("\nEnter the element after which you want to insert the node: ");
+    } return head
+printf("\nEnter the element after which you want to insert the node: ");
     scanf("%d", &key);
  while (temp != NULL) {
         if (temp->data == key) {
@@ -143,8 +110,6 @@ int main() {
     node *head = NULL;
 do {
         printf("\nProgram to perform various operations on heap using dynamic memory management\n");
-        printf("1. Create\n");
-        printf("2. Display\n");
         scanf("%d", &choice);
         switch (choice) {
             case 1:
@@ -167,8 +132,6 @@ do {
 ![image](https://github.com/niranjanadevi-s/Ex-12-IMPLEMENTATION-OF-HEAP-STORAGE-ALLOCATION-STRATEGY/assets/141748873/f93e2763-93b7-4862-887b-02a40dbc0ab1)
 
 ![image](https://github.com/niranjanadevi-s/Ex-12-IMPLEMENTATION-OF-HEAP-STORAGE-ALLOCATION-STRATEGY/assets/141748873/ca705f3d-2b3b-4a78-aa9b-02c5e9a21ac2)
-
-![image](https://github.com/niranjanadevi-s/Ex-12-IMPLEMENTATION-OF-HEAP-STORAGE-ALLOCATION-STRATEGY/assets/141748873/4d1c8ab6-ce0b-4b74-aaf7-f657f361db1a)
 
 # RESULT
 The heap storage allocation strategy is implemented successfully, and the output is 
